@@ -1,8 +1,9 @@
 import React from "react";
-import { Header } from "../components/Header";
-
+import {Helmet} from "react-helmet";
 export const Home = () => {
   return (<>
-  <Header/>
+  <Helmet>
+    <title>Instagram</title>
+  </Helmet>
   <div>Home</div></>);
 };

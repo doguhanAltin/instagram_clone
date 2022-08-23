@@ -14,7 +14,7 @@ import { RegisterSchema } from "../../validation/register-schema";
 
 type TValues = {
   email: string;
-  full_name: string;
+  fullName: string;
   username: string;
   password: string;
 };
@@ -25,7 +25,7 @@ export const Register = () => {
   const navigate = useNavigate();
   const location: any = useLocation();
 
-  const handleSubmit = async (values: TValues, actions: any) => {
+  const handleSubmit = async (values: TValues) => {
     const response = await register(values);
     if (response) {
       navigate(location.state?.return_url || "/", { replace: true });
@@ -34,12 +34,12 @@ export const Register = () => {
   return (
     <div className="w-[350px] grid gap-y-3">
       <div className="bg-white border p-[40px] pt-10 pb-6">
-        <a href="#" className="flex justify-center mb-4">
+        <div className="flex justify-center mb-4">
           <img
             className="h-[51px]"
             src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
           />
-        </a>
+        </div>
         <p className="=text-[17px] font-semibold text-[#8e8e8e] text-center mb-6">
           Sign up to see photos and videos from your friends
         </p>
@@ -55,7 +55,7 @@ export const Register = () => {
           validationSchema={RegisterSchema}
           initialValues={{
             email: "",
-            full_name: "",
+            fullName: "",
             username: "",
             password: "",
           }}
@@ -64,7 +64,7 @@ export const Register = () => {
           {({ isSubmitting, isValid, dirty, values }) => (
             <Form className="grid gap-y-1">
               <Input label="Email" type="text" name="email" />
-              <Input label="Full Name" type="text" name="full_name" />
+              <Input label="Full Name" type="text" name="fullName" />
               <Input label="User Name" type="text" name="username" />
               <Input label="Password" type="password" name="password" />
               <p className="text-xs text-[#8e8e8e] py-2">

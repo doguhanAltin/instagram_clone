@@ -36,14 +36,14 @@ const db = getFirestore(app);
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-   const dbUser= await getDoc(doc(db,"users",user.uid))
+    const dbUser = await getDoc(doc(db, "users", user.uid));
     let data = {
-      uid:user.uid,
+      uid: user.uid,
       fullName: user.displayName,
       email: user.email,
-      emailVerified:user.emailVerified,
-      ...dbUser.data()
-    }
+      emailVerified: user.emailVerified,
+      ...dbUser.data(),
+    };
     userHandle(data);
   } else {
     userHandle(false);
@@ -59,6 +59,18 @@ export const login = async (email, password) => {
   }
 };
 
+export const getUserInfo = async (uname)=>{
+  const username = await getDoc(doc(db,"usernames",uname));
+  if(username.exists()){
+   return await (await getDoc(doc(db,"users",username.data().user_id))).data()
+   
+  }else{
+    toast.error("kullanıcı yok")
+throw new Error("Kullanıcı Yok")  }
+
+
+}
+
 export const logout = async () => {
   try {
     await signOut(auth);
@@ -67,33 +79,42 @@ export const logout = async () => {
   }
 };
 
-export const register = async ({ email, password, full_name, username }) => {
+export const register = async ({ email, password, fullName, username }) => {
   try {
     // users koleksiyonuna kullanıcı ekleme
 
- const user = await getDoc(doc(db,"usernames",username))
- if(user.exists()){
-  toast.error("Kullanıcı adı zaten var")
- }else{
-  const response = await createUserWithEmailAndPassword(auth, email, password);
+    const user = await getDoc(doc(db, "usernames", username));
+    if (user.exists()) {
+      toast.error("Kullanıcı adı zaten var");
+    } else {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-await setDoc(doc(db,"usernames",username), {
-  user_id:response.user.uid
-})
+      await setDoc(doc(db, "usernames", username), {
+        user_id: response.user.uid,
+      });
 
-    await setDoc(doc(db, "users", response.user.uid), {
-      full_name,
-      username,
-      followers: [],
-      following: [],
-      notifications: [],
-    });
+      await setDoc(doc(db, "users", response.user.uid), {
+        fullName,
+        username,
+        followers: [],
+        following: [],
+        notifications: [],
+        website: "",
+        bio: "",
+        phoneNumber: "",
+        gender: "",
+        posts: 0,
+      });
 
-    await updateProfile(auth.currentUser,{
-      displayName:full_name
-       
-    })
-return response.user}
+      await updateProfile(auth.currentUser, {
+        displayName: fullName,
+      });
+      return response.user;
+    }
   } catch (error) {
     toast.error(error.message);
   }

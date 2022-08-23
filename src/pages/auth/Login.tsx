@@ -18,9 +18,9 @@ type TValues = {
 
 export const Login = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const user = useSelector((state:any)=>state.auth.user)
+  const user = useSelector((state: any) => state.auth.user);
   const navigate = useNavigate();
-  const location: any = useLocation();
+  const location:any  = useLocation();
   const img = [
     "https://www.instagram.com/static/images/homepage/screenshots/screenshot1-2x.png/cfd999368de3.png",
     "https://www.instagram.com/static/images/homepage/screenshots/screenshot2-2x.png/80b8aebdea57.png",
@@ -29,9 +29,9 @@ export const Login = () => {
   ];
   useEffect(() => {
     let images = ref.current?.querySelectorAll("img");
-    let total: any = images?.length;
-    let current: number = 0;
-    const imageSlider: any = () => {
+    let total: number = typeof images !== "undefined" ? images.length : 0;
+    let current = 0;
+    const imageSlider: ()=>void = () => {
       //@ts-ignore
       images[(current > 0 ? current : total) - 1].classList.add("opacity-0");
       //@ts-ignore
@@ -46,15 +46,11 @@ export const Login = () => {
     };
   }, [ref]);
 
-
-
-
-if(user) {
-  return <Navigate to={location.state?.return_url || "/"}  replace={true}  />
-}
-  const handleSubmit = async (values: TValues, actions: any) => {
+  if (user && typeof location.state === "object"  ) {
+    return <Navigate to={location.state.return_url || "/"} replace={true} />;
+  }
+  const handleSubmit = async (values: TValues) => {
     const response = await login(values.username, values.password);
-
   };
   return (
     <div className="h-full w-full flex items-center gap-x-8 justify-center">
@@ -75,12 +71,12 @@ if(user) {
       </div>
       <div className="w-[350px] grid gap-y-3">
         <div className="bg-white border p-[40px] pt-6 pb-2">
-          <a href="#" className="flex justify-center mb-8">
+          <div className="flex justify-center mb-8">
             <img
               className="h-[51px]"
               src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
             />
-          </a>
+          </div>
 
           <Formik
             validationSchema={LoginSchema}
@@ -134,7 +130,13 @@ if(user) {
         <div className="bg-white border p-4 text-sm text-center">
           {" "}
           Don't Have an account?{" "}
-          <Link to="/auth/register" className="text-brand text-sm font-semibold"> Sign Up</Link>
+          <Link
+            to="/auth/register"
+            className="text-brand text-sm font-semibold"
+          >
+            {" "}
+            Sign Up
+          </Link>
         </div>
       </div>
     </div>
