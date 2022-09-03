@@ -19,3 +19,8 @@ html,body,#root{
     @apply flex-1;
 }
 }
+@layer components {
+    .messages-box > main {
+        @apply flex flex-col gap-y-2;
+    }
+}

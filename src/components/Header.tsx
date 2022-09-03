@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
@@ -20,10 +21,12 @@ export const Header = () => {
         <Search />
         <nav className="flex items-center gap-x-6">
           <NavLink to="/">
-            <Icon name="home" size={24} />
-          </NavLink>
+          {({isActive})=>isActive? <Icon name="home-filled" size={24} />: <Icon name="home" size={24} />
+  }
+               </NavLink>
           <NavLink to="/inbox">
-            <Icon name="direct" size={24} />
+            {({isActive})=>isActive? <Icon name="direct-filled" size={24} />: <Icon name="direct" size={24} />
+  }
           </NavLink>
           <NavLink to="/">
             <Icon name="new" size={24} />
@@ -35,7 +38,15 @@ export const Header = () => {
             <Icon name="heart" size={24} />
           </NavLink>
           <NavLink to={`/${user.username}`}>
-            <img className="w-6 h-6 rounded-full" src="/no-avatar.jpeg" /> </NavLink>
+          {({isActive})=><img className={
+            classNames({
+              "w-6 h-6 rounded-full":true,
+              "ring-1 ring-offset-1 ring-black":isActive
+            })
+          }src="/no-avatar.jpeg" />
+  }
+     
+             </NavLink>
         </nav>
       </div>
     </header>

@@ -10,7 +10,7 @@ import { ProfileTagged } from "./pages/Profile/ProfileTagged";
 import { Logout } from "./pages/Logout";
 import { Inbox } from "./pages/Inbox/Inbox";
 import InboxLayout from "./pages/Inbox";
-import { Chat } from "./pages/Inbox/components/Chat";
+import { Chat } from "./pages/Inbox/chat";
 
 interface TRoutes {
   path?: string;
@@ -39,9 +39,10 @@ const routes: Array<TRoutes> = [
       {
         path: "inbox",
         element: <InboxLayout />,
-        children: [{ index: true, element: <Inbox /> },
-      {path:':conversationId',
-    element:<Chat />}],
+        children: [
+          { index: true, element: <Inbox /> },
+          { path: ":conversationId", element: <Chat /> },
+        ],
       },
     ],
   },
