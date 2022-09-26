@@ -19,7 +19,7 @@ export const ChatList = () => {
       user: {
         avatar:
           "https://cdnuploads.aa.com.tr/uploads/Contents/2021/08/11/thumbs_b_c_8fe61e9f4fdf15a13e895a102669f301.jpg",
-        name: "Fatih Terim",
+        name: "Kullanıcı1",
       },
       lastMessage: "Mock Data1",
     },
