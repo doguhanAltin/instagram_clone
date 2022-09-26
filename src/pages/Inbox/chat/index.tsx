@@ -5,7 +5,7 @@ import { Reply } from "./components/Reply";
 
 export const Chat = () => {
   const user = {
-    name: "Fatih Terim",
+    name: "Kullanıcı 1 ",
     avatar:
       "https://cdnuploads.aa.com.tr/uploads/Contents/2021/08/11/thumbs_b_c_8fe61e9f4fdf15a13e895a102669f301.jpg",
   };
@@ -15,24 +15,24 @@ export const Chat = () => {
       name:"Doğuhan Altın",
       username:"altindoguhan",
       avatar:"https://pps.whatsapp.net/v/t61.24694-24/294726608_448120610506719_1543144370319715266_n.jpg?ccb=11-4&oh=01_AVzZye3prErhlG7APwUYLWJA7Rn2zuqNv80Jp0FdjXK45A&oe=631F8121"
-    }, message: "Hocaam" },
+    }, message: "Mesaj1" },
     {
       from: {
         id: "sadas",
-        name: "Fatih Terim",
+        name: "Kullanıcı 1 ",
         username: "fatihterim",
         avatar:"https://cdnuploads.aa.com.tr/uploads/Contents/2021/08/11/thumbs_b_c_8fe61e9f4fdf15a13e895a102669f301.jpg"
       },
-      message:"Merhaba,Admin ben Fatih Hocan"
+      message:"Mesaj2"
     },
     {
       from: {
         id: "sadas",
-        name: "Fatih Terim",
+        name: "Kullanıcı 1 ",
         username: "fatihterim",
         avatar:"https://cdnuploads.aa.com.tr/uploads/Contents/2021/08/11/thumbs_b_c_8fe61e9f4fdf15a13e895a102669f301.jpg"
       },
-      message:"Ne 13.'lüğü kalk yarın Barça ile UEFA finali var"
+      message:"Mesaj3"
     },
 
   ]);
