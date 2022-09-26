@@ -47,6 +47,8 @@ export const Header = () => {
   }
      
              </NavLink>
+
+             <button onClick={()=>logout()}>logOut</button>
         </nav>
       </div>
     </header>

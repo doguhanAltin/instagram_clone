@@ -26,8 +26,8 @@ const routes: Array<TRoutes> = [
     element: <Layout />,
     auth: true,
     children: [
+
       { index: true, element: <Home /> },
-      { path: "logout", element: <Logout /> },
       {
         path: ":username",
         element: <ProfileLayout />,

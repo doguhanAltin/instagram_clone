@@ -21,7 +21,7 @@ export const ChatList = () => {
           "https://cdnuploads.aa.com.tr/uploads/Contents/2021/08/11/thumbs_b_c_8fe61e9f4fdf15a13e895a102669f301.jpg",
         name: "Fatih Terim",
       },
-      lastMessage: "Merhaba Doğu.Ben Fatih Hocan",
+      lastMessage: "Mock Data1",
     },
 
     {
@@ -31,7 +31,7 @@ export const ChatList = () => {
           "https://pps.whatsapp.net/v/t61.24694-24/107699925_111314230513614_8434186214804513038_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AVy0Snm7154Smkneq8EDc0YhgT2SnxE_tndhWtvHwbBerg&oe=630C770C",
         name: "Cutay",
       },
-      lastMessage: "Hamdolsun dou",
+      lastMessage: "Mock Data2",
     },
 
     {
@@ -41,7 +41,7 @@ export const ChatList = () => {
           "https://pps.whatsapp.net/v/t61.24694-24/254747326_930149280964078_9189936790928159756_n.jpg?ccb=11-4&oh=01_AVw7cG1f-Z3yyRGSIUtU4ppNLDSTHZVq8ud7axvACXqjbQ&oe=630D9A9D",
         name: "Batu",
       },
-      lastMessage: "Bench-150kg",
+      lastMessage: "Mock Data3",
       unread: true,
     },
   ];
